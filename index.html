@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body
+        {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(221, 219, 219, 0.3)), url('bg.jpg');
+            height: 100vh;
+            width: 100vw;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .container
+        {
+           width: 100%;
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+        }
+
+        .note 
+        {
+           width: 100%;
+           display: flex;
+           justify-content: center;
+        }
+
+        .note > input
+        {
+            width: 50%;
+            padding: 3px 4px;
+            font-size: 35px;
+            font-weight: 700;
+            color: rgb(47, 160, 47);
+            background: rgb(196, 235, 194);
+            border-radius: 10px;
+            border: none;
+            box-shadow: 2px 2px 2px 2px rgba(27, 27, 27, 0.2);
+        }
+
+        .refer > p
+        {
+            color: rgb(11, 77, 5);
+            font-size: 35px;
+            font-weight: 700;
+        }
+
+        .but
+        {
+            display: inline;
+            align-items: center;
+            justify-content: center;
+           
+        }
+    </style>
+    
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class = "note">
+            <input type = "text" name="" id="result" class="text-center mx-5"> <br><br>
+        </div>
+        <br><br>
+        <div class="card w-50 m-auto text-center">
+            <div class="card-header text-center bg-success text-white">BMI CALCULATOR</div>
+            <div class="card-body">
+             <form class="form-inline w-50 m-auto" onsubmit="return false">
+                 <div class="form-group">
+                     
+                     <input type="text" name="" placeholder="Weight in Kg" required id="weight" class="from-control m-auto text-center rounded border-bottom-0 border border-secondary py-1 " >
+                 </div> <br>
+                 <div class="form-group">
+                   
+                    <input type="text" name="" placeholder="Height in Ft" required id="height" class="from-control m-auot text-center rounded border-bottom-0 border border-secondary py-1 ">
+                </div> <br>
+                <div class="form-group">
+                   
+                    <input type="text" name="" id="bmivalue" placeholder="Your BMI Value" class="from-control m-auto text-center rounded border-bottom-0 border border-secondary py-1 ">
+                </div> <br>
+                <div>
+                    <button class = "btn btn-success" onclick="getbmivalue()">Calculate BMI</button>
+                </div>
+             </form>
+            </div>
+            <div class="card-footer text-center">A healthy BMI ranges between 19 and 25</div>
+        </div>  <br> <br>
+        <div class="refer text-center">
+            <p class ="text-center">Refer according to your weight issue</p>
+            <div class="but">
+                <button class = "btn btn-primary mx-2" onclick="under()">Underweight</button>
+                <button class = "btn btn-primary mx-2" onclick="over()">Overweight</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        
+        function getbmivalue()
+        {
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+
+            height = height * 12 * 0.025;
+            var newbmi = weight/(height*height);
+            newbmi = Math.round(newbmi);
+
+            document.getElementById('bmivalue').value = newbmi;
+
+            if(newbmi<19) 
+            {
+                document.getElementById('result').value = "Sorry! You Are Underweight";
+            }
+            else if(newbmi>25)
+            {
+                document.getElementById('result').value = "Sorry! You Are Overweight";
+            }
+            else
+            {
+                document.getElementById('result').value = "Congrats! You Are Healthy";
+            }
+        }
+
+        function under()
+        {
+            window.open('https://www.healthline.com/health/underweight-health-risks');
+        }
+        function over()
+        {
+            window.open('https://www.healthline.com/health/how-to-prevent-obesity');
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" ></script>
+
+</body>
+</html>
